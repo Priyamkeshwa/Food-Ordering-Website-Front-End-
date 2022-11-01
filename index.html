@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Squada+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app-content">
+        <div id="landing">
+            <div id="navigation">
+                <div class="logo">
+                    <span>JTGeats</span>
+                </div>
+                <nav class="webPages">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <nav class="icons">
+                    <ul>
+                        <li><img src="icons/Search.svg" alt=""></li>
+                        <li onclick="cartIconClicked();" id="cartIcon" style="margin-right:0px;"><img src="icons/Cart.svg" alt="">
+                        <div style="width:8px;height:8px;position:relative;right: -16px;top: -25px;background: #F3BA00;border-radius: 50%;"></div></li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="landing-content">
+                <div class="landing-content-left">
+                    <div class="landing-content-left-content">
+                        <h1>Authentic Home food in India</h1>
+                        <p>JTGeats is a courier service in which authentic home cook food is delivered to a customer.</p>
+                        <div id="searchBar">
+                            <input type="text" name="" id="searchInput" placeholder="Search food you love">
+                            <button class="button">Search</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="landing-content-right">
+                    <img src="images/cooking/cuate.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div id="cartDialogue" style="display: none;z-index:9999;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 21 24" fill="none">
+                <path stroke="#ededed" d="M2.97689 9.84C3.01712 9.33881 3.24464 8.87115 3.61417 8.53017C3.98369 8.18918 4.46808 7.9999 4.97089 8H17.0289C17.5317 7.9999 18.0161 8.18918 18.3856 8.53017C18.7551 8.87115 18.9827 9.33881 19.0229 9.84L19.8259 19.84C19.848 20.1152 19.8129 20.392 19.7227 20.6529C19.6326 20.9139 19.4894 21.1533 19.3022 21.3562C19.115 21.5592 18.8878 21.7211 18.6349 21.8319C18.382 21.9427 18.109 21.9999 17.8329 22H4.16689C3.89081 21.9999 3.61774 21.9427 3.36487 21.8319C3.112 21.7211 2.8848 21.5592 2.69759 21.3562C2.51037 21.1533 2.36719 20.9139 2.27706 20.6529C2.18693 20.392 2.1518 20.1152 2.17389 19.84L2.97689 9.84V9.84Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path stroke="#ededed" d="M14.9999 11V6C14.9999 4.93913 14.5785 3.92172 13.8283 3.17157C13.0782 2.42143 12.0607 2 10.9999 2C9.93901 2 8.9216 2.42143 8.17145 3.17157C7.42131 3.92172 6.99988 4.93913 6.99988 6V11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p id="cartMain">Cart is Empty</p>
+            <p id="cartSub">Add some items to the cart to checkout</p>
+            <button onclick="backToMenuClicked();" id="backToMenu">Back to Menu</button>
+        </div>
+        <div id="requestDish" style="display: none;z-index:9999;">
+            <p id="requestTitle">Request a Dish</p>
+            <label for="requestbox1" style="margin-right:864px;">Name*</label>
+            <input type="text" name = "" id="requestbox1" placeholder="Enter name of the dish">
+            <label for="requestbox2" style="margin-right:800px;">Upload an image</label>  <!-- CHECK THIS WITH KP -->
+            <input type="text" name="" id="urlBox" placeholder="Paste a URL">
+            <div class="requestbuttons">
+                <button onclick="requestClicked();" id="cancelRequest">Cancel</button>
+                <button onclick="requestClicked();" id="submitRequest">Submit Request</button>
+            </div>
+        </div>
+        <div id="blackSpace" style="display:none;width:100%;height:4515px;background-color:rgba(0,0,0,0.4);position:absolute;z-index:200;"></div>
+        <div class="foodGrid">
+            <h2>Home Kitchen</h2>
+            <div class="foodItems">
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/1.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>₹190</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/2.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>₹123</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/3.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>₹190</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/4.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>₹190</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/5.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>$19</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/6.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>₹190</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/7.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>₹190</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/8.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>₹190</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/1.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>$19</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/2.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>₹190</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/3.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>₹190</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <div class="image">
+                        <img src="images/4.png" width="277" height="250" alt="">
+                    </div>
+                    <div class="imgCaption">
+                        <div class="imgCaption-left">
+                            <p>Homemade Pizza</p>
+                            <div class="time">
+                                <div class="rating">
+                                    <img src="icons/star.svg" alt="">
+                                    <p>4.7</p>
+                                </div>
+                                <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                            </div>
+                        </div>
+                        <div class="imgCaption-right">
+                            <p>₹190</p>
+                            <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Popular items -->
+            <div class="popularItems">
+                <h3>Popular Items</h3>
+                <div class="popularItems-items">
+                    <div style="border-radius:50%;border: 3px solid #1cc474;width:71.5px;height:71.5px;">
+                        <img src="icons/arrow.svg" style="position:relative;top:17px;left:19px;"/>
+                    </div>
+                    <div></div>
+                    <div class="food-item">
+                        <div class="image">
+                            <img src="images/1.png" width="277" height="250" alt="">
+                        </div>
+                        <div class="imgCaption">
+                            <div class="imgCaption-left">
+                                <p>Homemade Pizza</p>
+                                <div class="time">
+                                    <div class="rating">
+                                        <img src="icons/star.svg" alt="">
+                                        <p>4.7</p>
+                                    </div>
+                                    <p class="timeTaken"><span style="margin-right:4px;">50-79</span><span>min</span></p>
+                                </div>
+                            </div>
+                            <div class="imgCaption-right">
+                                <p>₹190</p>
+                                <div class="orders">
+                                    <img src="icons/minus.svg" width="27" height="25" style="background: #F3BA00;border-radius: 5px 0px 0px 5px;" alt="">
+                                    <div>
+                                        <p>1</p>
+                                    </div>
+                                    <img src="icons/plus.svg" width="27" height="25" style="background: #F3BA00;border-radius: 0px 5px 5px 0px;" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="food-item">
+                        <div class="image">
+                            <img src="images/tandoori.png" width="277" height="250" alt="">
+                        </div>
+                        <div class="imgCaption">
+                            <div class="imgCaption-left">
+                                <p>Tandoori Chicken</p>
+                                <div class="time">
+                                    <div class="rating">
+                                        <img src="icons/star.svg" alt="">
+                                        <p>4.3</p>
+                                    </div>
+                                    <p class="timeTaken"><span style="margin-right:4px;">15-29</span><span>min</span></p>
+                                </div>
+                            </div>
+                            <div class="imgCaption-right">
+                                <p>₹184</p>
+                                <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="food-item">
+                        <div class="image">
+                            <img src="images/chilli.png" width="277" height="250" alt="">
+                        </div>
+                        <div class="imgCaption">
+                            <div class="imgCaption-left">
+                                <p>Chilli Chicken</p>
+                                <div class="time">
+                                    <div class="rating">
+                                        <img src="icons/star.svg" alt="">
+                                        <p>4.1</p>
+                                    </div>
+                                    <p class="timeTaken"><span style="margin-right:4px;">30-40</span><span>min</span></p>
+                                </div>
+                            </div>
+                            <div class="imgCaption-right">
+                                <p>₹116</p>    
+                                <img src="icons/plus.svg" width="22" height="20" style="background: #F3BA00;border-radius: 5px;" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div style="border-radius:50%;border: 3px solid #1cc474;width:71.5px;height:71.5px;">
+                        <img src="icons/arrow.svg" style=" transform: scaleX(-1);position:relative;top:17px;left:25px;"/>
+                    </div>
+                </div>
+            </div>
+            <button class="request" onclick="requestClicked();">Request a Dish</button>
+        </div>
+    </div>
+    <div class="serviceSection">
+        <div class="service">
+            <p id = "para1">We are providing best</p>
+            <p id = "para2">home cooked food delivery service.</p>
+        </div>
+        <div class="subline">
+            <p id = "para3">Away from home and craving the tasty homemade recipes?</p>
+            <p id = "para4">Choose from a selection of our delicious home cooked dishes </p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div  style="width: 877px; height:442px; margin: 0 auto;" class="video" onmouseover="show()" onmouseout="hide()">
+            <video  class = "gordonvideo" width="877" height="442" id="myVideo" poster="https://i.ytimg.com/vi/9Ssc4Z--H48/maxresdefault.jpg" >
+                <source src="Gordon Ramsay Teaches Cooking ｜ Official Trailer ｜ MasterClass.mp4" type="video/mp4">
+            </video>
+        
+            <input id="playIcon"  type="image" name="Name of image button" src="icons/play.svg" alt="text"> 
+        </div>
+    </div>
+    <div class="green">
+
+    </div>
+    <div class="questions">
+        <div class="form">
+            <p id="para5">Do you have a question</p>
+            <p id="para6">or want to become a seller?</p>
+            <p id="para7">Fill this form and our manager will contact you in the next 48hours.</p>
+            <div class="allInputs">
+                <div class="inputs">
+                    <input type="text" name = "" id="" placeholder="Your Name">
+                    <input type="text" name="" id="" placeholder="Your e-mail">
+                </div>
+                <input type="text" name="" id="message" placeholder="Your Message">
+            </div>
+            <div class="button">
+                <button class="submit">Submit</button>
+            </div>
+        </div>
+        <div class="form-logo">
+            <img src="icons/Food delivery illustration.svg" alt="">
+        </div>
+    </div>
+    <footer>
+        <div id="landing" height="137">
+            <div id="navigation">
+                <div class="logo">
+                    <span>JTGeats</span>
+                </div>
+                <nav class="webPages">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <nav class="icons">
+                    <ul>
+                        <li><img src="icons/Facebook.svg" alt=""></li>
+                        <li><img src="icons/instagram.svg" alt=""></li>
+                    </ul>
+                </nav>
+                
+            </div>
+            <hr id="hrstyle"> 
+        </div>    
+    </footer>
+    <script src="script.js" type="text/javascript"></script>
+</body>
+</html>
+
